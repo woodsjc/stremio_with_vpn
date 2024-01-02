@@ -22,9 +22,12 @@ services:
     ports:
       - 11470:11470
       - 12470:12470
-        #restart: unless-stopped
+    restart: unless-stopped
 
   streamio:
     image: stremio/server:latest
     container_name: streamio
     network_mode: service:vpn
+    depends_on:
+      - vpn
+    restart: unless-stopped
